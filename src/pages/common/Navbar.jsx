@@ -1,22 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../../context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOutUser()
+    .then(() => {
+      Swal.fire({
+        title: 'success!',
+        text: 'Successfully LogOut',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
+    })
+    .catch(error => {
+      Swal.fire({
+        title: 'error!',
+        text: 'Failed to logout',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
+    })
+  }
+
   const links = (
     <>
-      <NavLink to='/'>Home</NavLink>
+      <NavLink to="/">Home</NavLink>
       <NavLink>Queries</NavLink>
     </>
   );
   const userLinks = (
     <>
-    <NavLink>Home</NavLink>
-    <NavLink>Queries</NavLink>
-    <NavLink>Recommendations For Me</NavLink>
-    <NavLink>My Queries</NavLink>
-    <NavLink>My Recommendations</NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink>Queries</NavLink>
+      <NavLink>Recommendations For Me</NavLink>
+      <NavLink>My Queries</NavLink>
+      <NavLink>My Recommendations</NavLink>
     </>
-  )
+  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -41,18 +65,28 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-           {links}
+            {user ? userLinks : links}
           </ul>
         </div>
         <a className="btn btn-ghost text-lg">Product Recommendation</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {links}
+          {user ? userLinks : links}
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to='/logIn'><button className="btn">Log In</button></Link>
+        {user ? (
+          <>
+            <button onClick={handleLogOut} className="btn">Log Out</button>
+          </>
+        ) : (
+          <>
+            <Link to="/logIn">
+              <button className="btn">Log-In</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

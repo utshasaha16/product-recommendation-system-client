@@ -2,6 +2,8 @@ import Lottie from "lottie-react";
 import React, { useContext } from "react";
 import registerAnimation from "../../assets/lottie/register.json";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -20,13 +22,22 @@ const Register = () => {
     // if(password){}
 
     createUser(email, password)
-    .then(result => {
-        console.log(result.user);
-    })
-    .catch(error => {
-        console.log(error.message);
-    })
-
+      .then((result) => {
+        Swal.fire({
+          title: "Success!",
+          text: "Successfully register",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to register please check email and password",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      });
   };
 
   return (
@@ -90,6 +101,12 @@ const Register = () => {
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
+          <p className="text-center mb-3">
+            Allready have an account{" "}
+            <Link className="text-blue-700" to="/logIn">
+              Log In
+            </Link>
+          </p>
         </div>
       </div>
     </div>
