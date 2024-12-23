@@ -68,10 +68,10 @@ const Navbar = () => {
             {user ? userLinks : links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-lg">Product Recommendation</a>
+        <a className=" text-lg">Product Recommendation</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 ml-16 space-x-2">
           {user ? userLinks : links}
         </ul>
       </div>
