@@ -4,6 +4,8 @@ import MainLayout from "../layout/MainLayout";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import LogIn from "../pages/LogIn/LogIn";
 import Register from "../pages/Register/Register";
+import AddQueries from "../pages/AddQueries/AddQueries";
+import MyQueries from "../pages/MyQueries/MyQueries";
 
 
 
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
         {
           path: "/register",
           element: <Register></Register>
+        },
+        {
+          path: "/addQueries",
+          element: <AddQueries></AddQueries>
+        },
+        {
+          path: "/myQueries",
+          element: <MyQueries></MyQueries>
         }
       ]
     },

@@ -48,7 +48,7 @@ const Footer = () => {
         </nav>
       </footer>
       <div className="divider"></div>
-      <p className="text-center">
+      <p className="text-center mb-4">
         Copyright © {new Date().getFullYear()} - All right reserved
       </p>
     </div>

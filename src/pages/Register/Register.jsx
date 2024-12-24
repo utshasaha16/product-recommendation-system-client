@@ -2,11 +2,12 @@ import Lottie from "lottie-react";
 import React, { useContext } from "react";
 import registerAnimation from "../../assets/lottie/register.json";
 import AuthContext from "../../context/AuthContext/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -29,8 +30,16 @@ const Register = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        updateUserProfile({displayName: name, photoURL: photoUrl})
+        .then(() => {
+          navigate("/")
+        })
+        .catch(error => {
+          console.log(error);
+        })
       })
       .catch((error) => {
+        console.log(error);
         Swal.fire({
           title: "Error!",
           text: "Failed to register please check email and password",
