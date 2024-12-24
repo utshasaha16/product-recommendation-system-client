@@ -1,16 +1,61 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import AuthContext from "../../context/AuthContext/AuthContext";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 const AddQueries = () => {
+  const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date());
+  // console.log(user);
+
+  const handleAddQuery = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const productName = form.productName.value;
+    const productBrand = form.productBrand.value;
+    const productImage = form.productImage.value;
+    const queryTitle = form.queryTitle.value;
+    const boycottingReason = form.boycottingReason.value;
+    const email = form.email.value;
+    const currentDateAndTime = startDate;
+
+    const formData = {
+      productName,
+      productBrand,
+      productImage,
+      queryTitle,
+      boycottingReason,
+      recommender: {
+        email,
+        name: user?.displayName,
+        photo: user?.photoURL,
+      },
+      currentDateAndTime,
+      recommendationCount: 0,
+    };
+    console.log(formData);
+
+    // post request
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/add-recommendation`,
+      formData
+    );
+    console.log(data);
+  };
+
   return (
     <div className=" md:p-12 p-12">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold mb-4">Add Your Recommendation</h2>
       </div>
-      <form >
+      <form onSubmit={handleAddQuery}>
         {/* input field for Product Name url and Product Brand */}
         <div className="md:flex gap-4 items-center">
           <div className="md:w-1/2">
-            <label className="text-gray-700 font-medium mb-1">Product Name</label>
+            <label className="text-gray-700 font-medium mb-1">
+              Product Name
+            </label>
 
             <input
               type="text"
@@ -22,7 +67,7 @@ const AddQueries = () => {
           </div>
           <div className="md:w-1/2">
             <label className=" text-gray-700 font-medium mb-1">
-            Product Brand
+              Product Brand
             </label>
 
             <input
@@ -38,7 +83,7 @@ const AddQueries = () => {
         <div className="md:flex gap-4 items-center">
           <div className="md:w-1/2">
             <label className="text-gray-700 font-medium mb-1">
-            Product Image-URL
+              Product Image-URL
             </label>
 
             <input
@@ -51,7 +96,7 @@ const AddQueries = () => {
           </div>
           <div className="md:w-1/2">
             <label className=" text-gray-700 font-medium mb-1">
-            Query TItle
+              Query TItle
             </label>
 
             <input
@@ -66,7 +111,9 @@ const AddQueries = () => {
         {/* input field for Boycotting Reason Details and user email */}
         <div className="md:flex gap-4 items-center">
           <div className="md:w-1/2">
-            <label className="text-gray-700 font-medium mb-1">Boycotting Reason Details</label>
+            <label className="text-gray-700 font-medium mb-1">
+              Boycotting Reason Details
+            </label>
 
             <input
               type="text"
@@ -77,75 +124,36 @@ const AddQueries = () => {
             ></input>
           </div>
           <div className="md:w-1/2">
-            <label className=" text-gray-700 font-medium mb-1">User Email</label>
+            <label className=" text-gray-700 font-medium mb-1">
+              User Email
+            </label>
 
             <input
               type="text"
-              name="rating"
+              name="email"
+              defaultValue={user?.email}
+              readOnly
               placeholder="User email"
               required
               className="w-full mb-4 p-2 border border-gray-300 rounded"
             ></input>
           </div>
         </div>
-        {/* input field for user name and user profile */}
-        <div className="md:flex gap-4 items-center">
-          <div className="md:w-1/2">
-            <label className="text-gray-700 font-medium mb-1">
-              User Name
-            </label>
+        {/* input field for current Date and Time */}
 
-            <input
-              type="text"
-              name="userName"
-              placeholder="User name"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-          <div className="md:w-1/2">
-            <label className=" text-gray-700 font-medium mb-1">
-              User Profile
-            </label>
-
-            <input
-              type="text"
-              name="userProfile"
-              placeholder="User profile"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-        </div>
-        {/* input field for current Date and Time and recommendationCount */}
-        <div className="md:flex gap-4 items-center">
-          <div className="md:w-1/2">
-            <label className="text-gray-700 font-medium mb-1">
+        <div className="flex flex-col gap-2">
+          <label className="text-gray-700 font-medium mb-1">
             Current Date and Time
-            </label>
+          </label>
 
-            <input
-              type="text"
-              name="currentDateAndTime"
-              placeholder="Current date and time"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-          <div className="md:w-1/2">
-            <label className=" text-gray-700 font-medium mb-1">Recommendation Count</label>
-
-            <input
-              type="text"
-              name="recommendationCount"
-              placeholder="Recommendation count"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
         </div>
+
         <input
-          className="w-full bg-[#EB453B] text-white p-2 rounded-md mt-3 font-medium"
+          className="w-full border-2 border-black hover:bg-black hover:text-white p-2 rounded-md mt-3 font-medium"
           type="submit"
           value="Add Query"
         />

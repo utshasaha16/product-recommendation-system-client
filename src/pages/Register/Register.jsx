@@ -20,7 +20,7 @@ const Register = () => {
     console.log(user);
 
     // Password validation
-    // if(password){}
+    // if(password <6){}
 
     createUser(email, password)
       .then((result) => {
@@ -50,7 +50,7 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-100 min-h-screen py-12">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <Lottie animationData={registerAnimation}></Lottie>

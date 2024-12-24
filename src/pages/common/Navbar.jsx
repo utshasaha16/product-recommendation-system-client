@@ -83,7 +83,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/logIn">
-              <button className="btn">Log-In</button>
+              <button className="btn">Log In</button>
             </Link>
           </>
         )}
