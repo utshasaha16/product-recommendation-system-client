@@ -1,31 +1,26 @@
 import React from "react";
-import bannerImg from '../../assets/banner-img/my-queries-banner-image.png'
+import bannerImg from "../../assets/banner-img/my-queries-banner-image.png";
 import { useNavigate } from "react-router-dom";
 
 const MyQueriesBanner = () => {
   const navigate = useNavigate();
   const handleAddQuery = () => {
-    navigate("/addQueries")
-  }
+    navigate("/addQueries");
+  };
   return (
     <div
-      className="relative bg-cover bg-center bg-no-repeat md:w-full h-full md:h-[30rem]"
+      className="hero h-96"
       style={{
         backgroundImage:
           `url(${bannerImg})`,
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-          Welcome to My Queries
-        </h1>
-        <button
-          onClick={handleAddQuery}
-          className="px-6 py-3 border-2 border-black hover:bg-black hover:text-white text-lg font-medium rounded-md shadow-lg transition duration-300"
-        >
-          Add Queries
-        </button>
+      <div className="hero-overlay bg-opacity-40"></div>
+      <div className="hero-content text-neutral-content text-center">
+        <div className="max-w-md">
+          <h1 className="mb-5 text-5xl font-bold">Wealcome to my queries</h1>
+          <button onClick={handleAddQuery} className="px-4 py-2 rounded border text-white hover:bg-black border-black">Add Queries</button>
+        </div>
       </div>
     </div>
   );

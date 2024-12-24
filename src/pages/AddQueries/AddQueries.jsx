@@ -36,11 +36,12 @@ const AddQueries = () => {
     };
     console.log(formData);
 
-    // post request
+    // make post request
     const { data } = await axios.post(
       `${import.meta.env.VITE_API_URL}/add-recommendation`,
       formData
     );
+    form.reset()
     console.log(data);
   };
 
