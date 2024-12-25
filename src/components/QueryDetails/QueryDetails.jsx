@@ -35,6 +35,9 @@ const QueryDetails = () => {
         <p>Recommender Email: {recommender.email}</p>
         <p>Date and time: {currentDateAndTime}</p>
       </div>
+      <section>
+        
+      </section>
     </div>
   );
 };

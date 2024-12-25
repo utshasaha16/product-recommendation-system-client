@@ -8,6 +8,7 @@ import AddQueries from "../pages/AddQueries/AddQueries";
 import MyQueries from "../pages/MyQueries/MyQueries";
 import QueryDetails from "../components/QueryDetails/QueryDetails";
 import UpdateQuery from "../pages/UpdateQuery/UpdateQuery";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -21,21 +22,31 @@ const router = createBrowserRouter([
       },
       {
         path: "/addQueries",
-        element: <AddQueries></AddQueries>,
+        element: (
+          <PrivateRoute>
+            <AddQueries></AddQueries>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myQueries",
-        element: <MyQueries></MyQueries>,
+        element: (
+          <PrivateRoute>
+            <MyQueries></MyQueries>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/queryDetails/:id",
         element: <QueryDetails></QueryDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/recommendations/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/recommendations/${params.id}`),
       },
       {
         path: "/updateQueries/:id",
         element: <UpdateQuery></UpdateQuery>,
-        loader: ({params}) => fetch(`http://localhost:5000/recommendations/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/recommendations/${params.id}`),
       },
       {
         path: "/logIn",

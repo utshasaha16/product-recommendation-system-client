@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signInAnimation from "../../assets/lottie/signIn.json";
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 const LogIn = () => {
   const { logInUser } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const LogIn = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        navigate('/')
       })
       .catch((error) => {
         Swal.fire({
