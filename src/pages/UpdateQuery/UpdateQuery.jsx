@@ -1,16 +1,26 @@
 import React, { useContext, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
 import Swal from "sweetalert2";
+import axios from "axios";
 
-const AddQueries = () => {
+const UpdateQuery = () => {
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
-  // console.log(user);
+  const query = useLoaderData();
+  const {
+    productImage,
+    queryTitle,
+    productName,
+    productBrand,
+    currentDateAndTime,
+    _id,
+    recommender,
+    boycottingReason
+  } = query || {};
 
-  const handleAddQuery = async (e) => {
+  const handleUpdateQuery = async (e) => {
     e.preventDefault();
     const form = e.target;
     const productName = form.productName.value;
@@ -21,7 +31,7 @@ const AddQueries = () => {
     const email = form.email.value;
     const currentDateAndTime = startDate;
 
-    const formData = {
+    const updateQuery = {
       productName,
       productBrand,
       productImage,
@@ -35,31 +45,31 @@ const AddQueries = () => {
       currentDateAndTime,
       recommendationCount: 0,
     };
-    console.log(formData);
+    console.log(updateQuery);
 
-    // make post request
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/add-recommendation`,
-      formData
+    
+    const { data } = await axios.put(
+      `${import.meta.env.VITE_API_URL}/recommendations/${_id}`,
+      updateQuery
     );
-    if(data.insertedId){
-      Swal.fire({
-        title: 'success!',
-        text: 'successfully added your recommendation',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      })
-    }
-    form.reset()
-    // console.log(data);
+    if(data.modifiedCount){
+          Swal.fire({
+            title: 'success!',
+            text: 'successfully updated your recommendation',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+        }
+    form.reset();
+    console.log(data);
   };
 
   return (
     <div className=" md:p-12 p-12">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold mb-4">Add Your Recommendation</h2>
+        <h2 className="text-3xl font-bold mb-4">Update Your Recommendation</h2>
       </div>
-      <form onSubmit={handleAddQuery}>
+      <form onSubmit={handleUpdateQuery}>
         {/* input field for Product Name url and Product Brand */}
         <div className="md:flex gap-4 items-center">
           <div className="md:w-1/2">
@@ -70,6 +80,7 @@ const AddQueries = () => {
             <input
               type="text"
               name="productName"
+              defaultValue={productName}
               placeholder="Enter product name"
               required
               className="w-full mb-4 p-2 border border-gray-300 rounded"
@@ -83,6 +94,7 @@ const AddQueries = () => {
             <input
               type="text"
               name="productBrand"
+              defaultValue={productBrand}
               placeholder="Enter product brand"
               required
               className="w-full mb-4 p-2 border border-gray-300 rounded"
@@ -99,6 +111,7 @@ const AddQueries = () => {
             <input
               type="url"
               name="productImage"
+              defaultValue={productImage}
               placeholder="Enter product image-URL"
               required
               className="w-full mb-4 p-2 border border-gray-300 rounded"
@@ -112,6 +125,7 @@ const AddQueries = () => {
             <input
               type="text"
               name="queryTitle"
+              defaultValue={queryTitle}
               placeholder="Enter Query tItle"
               required
               className="w-full mb-4 p-2 border border-gray-300 rounded"
@@ -128,6 +142,7 @@ const AddQueries = () => {
             <input
               type="text"
               name="boycottingReason"
+              defaultValue={boycottingReason}
               placeholder="Boycotting reason details"
               required
               className="w-full mb-4 p-2 border border-gray-300 rounded"
@@ -165,11 +180,11 @@ const AddQueries = () => {
         <input
           className="w-full border-2 border-black hover:bg-black hover:text-white p-2 rounded-md mt-3 font-medium"
           type="submit"
-          value="Add Query"
+          value="Update Query"
         />
       </form>
     </div>
   );
 };
 
-export default AddQueries;
+export default UpdateQuery;

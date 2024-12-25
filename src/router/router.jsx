@@ -7,6 +7,7 @@ import Register from "../pages/Register/Register";
 import AddQueries from "../pages/AddQueries/AddQueries";
 import MyQueries from "../pages/MyQueries/MyQueries";
 import QueryDetails from "../components/QueryDetails/QueryDetails";
+import UpdateQuery from "../pages/UpdateQuery/UpdateQuery";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
         path: "/queryDetails/:id",
         element: <QueryDetails></QueryDetails>,
         loader: ({ params }) => fetch(`http://localhost:5000/recommendations/${params.id}`),
+      },
+      {
+        path: "/updateQueries/:id",
+        element: <UpdateQuery></UpdateQuery>,
+        loader: ({params}) => fetch(`http://localhost:5000/recommendations/${params.id}`)
       },
       {
         path: "/logIn",
