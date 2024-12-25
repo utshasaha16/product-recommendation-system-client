@@ -8,7 +8,7 @@ const QueryCard = ({ query }) => {
     productName,
     productBrand,
     currentDateAndTime,
-    boycottingReason,
+    _id,
   } = query || {}
   return (
     <div className="card card-compact bg-base-100 rounded-xl hover:translate-y-2 hover:rounded-none shadow-xl">
@@ -24,8 +24,8 @@ const QueryCard = ({ query }) => {
         <p>{queryTitle}</p>
         <p>{currentDateAndTime}</p>
         <div className="card-actions">
-         <Link to="/queryDetails"> <button className="py-1 px-2 border border-black hover:bg-black hover:text-white">View details</button></Link>
-          <button className="py-1 px-2 border border-black hover:bg-black hover:text-white">Update</button>
+         <Link to={`/queryDetails/${_id}`}> <button className="py-1 px-2 border border-black hover:bg-black hover:text-white">View details</button></Link>
+          <Link><button className="py-1 px-2 border border-black hover:bg-black hover:text-white">Update</button></Link>
           <button className="py-1 px-2 border border-black hover:bg-black hover:text-white">Delete</button>
         </div>
       </div>

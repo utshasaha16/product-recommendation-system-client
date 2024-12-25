@@ -6,37 +6,41 @@ import LogIn from "../pages/LogIn/LogIn";
 import Register from "../pages/Register/Register";
 import AddQueries from "../pages/AddQueries/AddQueries";
 import MyQueries from "../pages/MyQueries/MyQueries";
-
-
+import QueryDetails from "../components/QueryDetails/QueryDetails";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout></MainLayout>,
-      errorElement: <ErrorPage></ErrorPage>,
-      children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-          path: "/logIn",
-          element: <LogIn></LogIn>
-        },
-        {
-          path: "/register",
-          element: <Register></Register>
-        },
-        {
-          path: "/addQueries",
-          element: <AddQueries></AddQueries>
-        },
-        {
-          path: "/myQueries",
-          element: <MyQueries></MyQueries>
-        }
-      ]
-    },
-  ]);
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/addQueries",
+        element: <AddQueries></AddQueries>,
+      },
+      {
+        path: "/myQueries",
+        element: <MyQueries></MyQueries>,
+      },
+      {
+        path: "/queryDetails/:id",
+        element: <QueryDetails></QueryDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/recommendations/${params.id}`),
+      },
+      {
+        path: "/logIn",
+        element: <LogIn></LogIn>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
+  },
+]);
 
-  export default router;
+export default router;

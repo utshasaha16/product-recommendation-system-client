@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyQueriesBanner from "../../components/Banner/MyQueriesBanner";
 import axios from "axios";
 import QueryCard from "../../components/QueryCard/QueryCard";
+import { Link } from "react-router-dom";
 
 const MyQueries = () => {
   const [queries, setQueries] = useState([]);
@@ -21,23 +22,23 @@ const MyQueries = () => {
         <MyQueriesBanner></MyQueriesBanner>
       </header>
       <main className="py-12">
-      <h1 className="text-xl font-bold text-center mb-6">My Queries</h1>
-        <section >
+        <h1 className="text-xl font-bold text-center mb-6">My Queries</h1>
+        <section>
           <div>
             {queries.length === 0 ? (
-              <div>
+              <div className="flex flex-col items-center">
                 <p className="text-gray-600 mb-4">No queries found.</p>
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                >
-                  Add Query
-                </button>
+                <Link to="/addQueries">
+                  <button className="px-4 py-2 rounded border text-black hover:text-white hover:bg-black border-black">
+                    Add Query
+                  </button>
+                </Link>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {
-                    queries.map(query => <QueryCard key={query._id} query={query}></QueryCard>)
-                }
+                {queries.map((query) => (
+                  <QueryCard key={query._id} query={query}></QueryCard>
+                ))}
               </div>
             )}
           </div>
