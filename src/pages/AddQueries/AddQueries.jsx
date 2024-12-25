@@ -42,15 +42,15 @@ const AddQueries = () => {
       `${import.meta.env.VITE_API_URL}/add-recommendation`,
       formData
     );
-    if(data.insertedId){
+    if (data.insertedId) {
       Swal.fire({
-        title: 'success!',
-        text: 'successfully added your recommendation',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      })
+        title: "success!",
+        text: "successfully added your recommendation",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
     }
-    form.reset()
+    form.reset();
     // console.log(data);
   };
 

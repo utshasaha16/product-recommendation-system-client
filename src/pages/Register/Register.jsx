@@ -24,19 +24,20 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
+        console.log(result);
         Swal.fire({
           title: "Success!",
           text: "Successfully register",
           icon: "success",
           confirmButtonText: "Ok",
         });
-        updateUserProfile({displayName: name, photoURL: photoUrl})
-        .then(() => {
-          navigate("/")
-        })
-        .catch(error => {
-          console.log(error);
-        })
+        updateUserProfile({ displayName: name, photoURL: photoUrl })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -107,7 +108,9 @@ const Register = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+              <button className="border-2 border-black hover:bg-black hover:text-white p-2 rounded-md font-medium">
+                Register
+              </button>
             </div>
           </form>
           <p className="text-center mb-3">
