@@ -1,8 +1,10 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const QueryCard = ({ query }) => {
+const QueryCard = ({ query, queries, setQueries }) => {
+ 
   const {
     productImage,
     queryTitle,
@@ -12,7 +14,7 @@ const QueryCard = ({ query }) => {
     _id,
   } = query || {};
 
-  const handleDelete = _id => {
+  const handleDelete = (_id) => {
     console.log(_id);
     Swal.fire({
       title: "Are you sure?",
@@ -21,18 +23,28 @@ const QueryCard = ({ query }) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Your file has been deleted.",
-        //   icon: "success"
-        // });
-        console.log('delete confirmed');
+        fetch(`http://localhost:5000/recommendations/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your recommendation has been deleted.",
+                icon: "success"
+              });
+             const remaining = queries.filter(item => item._id !== _id)
+             setQueries(remaining)
+            }
+          });
       }
     });
-  }
+  };
 
   return (
     <div className="card card-compact bg-base-100 rounded-xl hover:translate-y-2 hover:rounded-none shadow-xl">
@@ -56,7 +68,10 @@ const QueryCard = ({ query }) => {
               Update
             </button>
           </Link>
-          <button onClick={() => handleDelete(_id)} className="py-1 px-2 border border-black hover:bg-black hover:text-white">
+          <button
+            onClick={() => handleDelete(_id)}
+            className="py-1 px-2 border border-black hover:bg-black hover:text-white"
+          >
             Delete
           </button>
         </div>

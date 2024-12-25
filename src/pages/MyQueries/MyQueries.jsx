@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const MyQueries = () => {
   const [queries, setQueries] = useState([]);
+  // const [querys, setQuerys] = useState(queries);
   useEffect(() => {
     fetchAllRecommendation();
   }, []);
@@ -16,6 +17,8 @@ const MyQueries = () => {
     setQueries(data);
   };
   console.log(queries);
+
+
   return (
     <div>
       <header className="py-12">
@@ -37,7 +40,7 @@ const MyQueries = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {queries.map((query) => (
-                  <QueryCard key={query._id} query={query}></QueryCard>
+                  <QueryCard key={query._id} queries={queries} setQueries={setQueries} query={query}></QueryCard>
                 ))}
               </div>
             )}
