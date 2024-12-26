@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import axios from "axios";
@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import Recommendations from "../Recommendations/Recommendations";
 
 const QueryDetails = () => {
+ 
   const { user } = useContext(AuthContext);
   const {
     recommender,
@@ -49,9 +50,9 @@ const QueryDetails = () => {
       recommenderName,
       currentDate,
     };
-    console.log(recommendation);
+    console.log(queryId);
 
-    try{
+    try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/add-user-recommendation`,
         recommendation
@@ -65,12 +66,13 @@ const QueryDetails = () => {
         });
       }
       form.reset();
-    }
-    catch (error){
+    } catch (error) {
       console.log(error);
     }
-   
   };
+
+  
+  
 
   return (
     <div>
@@ -169,7 +171,7 @@ const QueryDetails = () => {
         </section>
         {/*  */}
         <section>
-            <Recommendations></Recommendations>
+          <Recommendations recommenderEmail={user?.email} ></Recommendations>
         </section>
       </div>
     </div>

@@ -39,11 +39,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/queries",
-        element: <Queries></Queries>
+        element: <Queries></Queries>,
       },
       {
         path: "/queryDetails/:id",
-        element: <QueryDetails></QueryDetails>,
+        element: (
+          <PrivateRoute>
+            <QueryDetails></QueryDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/recommendations/${params.id}`),
       },
