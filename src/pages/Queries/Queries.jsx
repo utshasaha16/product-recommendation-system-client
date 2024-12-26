@@ -22,7 +22,7 @@ const Queries = () => {
   return (
     <div>
       <h2 className="text-xl font-medium text-center mt-4">All Queries</h2>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-12">
         {
             queries.map(query => <QueriesCard key={query._id} query={query}></QueriesCard>)
         }

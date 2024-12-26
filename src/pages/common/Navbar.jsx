@@ -41,7 +41,7 @@ const Navbar = () => {
       <NavLink to="/queries">Queries</NavLink>
       <NavLink>Recommendations For Me</NavLink>
       <NavLink to="/myQueries">My Queries</NavLink>
-      <NavLink>My Recommendations</NavLink>
+      <NavLink to="/myRecommendation">My Recommendations</NavLink>
     </>
   );
   return (

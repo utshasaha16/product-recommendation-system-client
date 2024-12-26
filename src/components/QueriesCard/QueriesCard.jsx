@@ -18,7 +18,7 @@ const QueriesCard = ({ query }) => {
   }
 
   return (
-    <div className="card card-compact bg-base-100 rounded-xl hover:translate-y-2 hover:rounded-none shadow-xl">
+    <div className="card card-compact bg-base-100 rounded-xl hover:translate-y-2 hover:rounded-none shadow-md">
       <figure>
         <img src={productImage} alt="product image" />
       </figure>

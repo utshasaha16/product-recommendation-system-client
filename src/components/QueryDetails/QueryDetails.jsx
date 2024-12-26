@@ -171,7 +171,7 @@ const QueryDetails = () => {
         </section>
         {/*  */}
         <section>
-          <Recommendations recommenderEmail={user?.email} ></Recommendations>
+          <Recommendations></Recommendations>
         </section>
       </div>
     </div>

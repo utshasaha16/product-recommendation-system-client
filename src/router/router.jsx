@@ -10,6 +10,7 @@ import QueryDetails from "../components/QueryDetails/QueryDetails";
 import UpdateQuery from "../pages/UpdateQuery/UpdateQuery";
 import PrivateRoute from "./PrivateRoute";
 import Queries from "../pages/Queries/Queries";
+import MyRecommendation from "../pages/myRecommendation/myRecommendation";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             <MyQueries></MyQueries>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/myRecommendation",
+        element: <PrivateRoute> <MyRecommendation></MyRecommendation></PrivateRoute>
       },
       {
         path: "/queries",
