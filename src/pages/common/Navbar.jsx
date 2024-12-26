@@ -19,6 +19,7 @@ const Navbar = () => {
       navigate('/')
     })
     .catch(error => {
+      console.log(error);
       Swal.fire({
         title: 'error!',
         text: 'Failed to logout',
@@ -31,13 +32,13 @@ const Navbar = () => {
   const links = (
     <>
       <NavLink to="/">Home</NavLink>
-      <NavLink>Queries</NavLink>
+      <NavLink to="/queries">Queries</NavLink>
     </>
   );
   const userLinks = (
     <>
       <NavLink to="/">Home</NavLink>
-      <NavLink>Queries</NavLink>
+      <NavLink to="/queries">Queries</NavLink>
       <NavLink>Recommendations For Me</NavLink>
       <NavLink to="/myQueries">My Queries</NavLink>
       <NavLink>My Recommendations</NavLink>
