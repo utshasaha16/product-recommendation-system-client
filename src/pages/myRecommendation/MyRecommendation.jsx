@@ -22,14 +22,14 @@ const MyRecommendation = () => {
   }, []);
   console.log(myRecommendations);
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto md:py-10 py-5">
       <table className="table">
         {/* head */}
         <thead>
           <tr>
             <th></th>
             <th>Recommended Product Name</th>
-            <th>Recommender Name</th>
+            <th>Recommended By</th>
             <th>Current Date</th>
           </tr>
         </thead>

@@ -59,7 +59,7 @@ const MyRecommendationTable = ({ recommendation, myRecommendations, setMyRecomme
       <td>
         <button
           onClick={() => handleDelete(_id)}
-          className="border border-black hover:bg-black hover:text-white p-2 rounded-md font-medium"
+          className="border border-black hover:bg-black hover:text-white p-2 font-medium"
         >
           Delete
         </button>

@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 const LogIn = () => {
   const { logInUser } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const LogIn = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => {
         Swal.fire({
@@ -68,12 +68,14 @@ const LogIn = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="border border-black hover:bg-black hover:text-white p-2  font-medium">
+                Login
+              </button>
             </div>
           </form>
-          <p className="text-center mb-3">
-            Don't have an account{" "}
-            <Link className="text-blue-700" to="/register">
+          <p className="text-center font-semibold mb-3">
+            Don't have an account?{" "}
+            <Link className="text-blue-700 font-semibold" to="/register">
               Register
             </Link>
           </p>

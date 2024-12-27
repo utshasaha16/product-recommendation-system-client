@@ -18,7 +18,7 @@ const AddQueries = () => {
     const productImage = form.productImage.value;
     const queryTitle = form.queryTitle.value;
     const boycottingReason = form.boycottingReason.value;
-    const email = form.email.value;
+    const email = user?.email;
     const currentDateAndTime = startDate;
 
     const formData = {
@@ -133,37 +133,21 @@ const AddQueries = () => {
               className="w-full mb-4 p-2 border border-gray-300 rounded"
             ></input>
           </div>
-          <div className="md:w-1/2">
-            <label className=" text-gray-700 font-medium mb-1">
-              User Email
-            </label>
-
-            <input
-              type="text"
-              name="email"
-              defaultValue={user?.email}
-              readOnly
-              placeholder="User email"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-        </div>
-        {/* input field for current Date and Time */}
-
-        <div className="flex flex-col gap-2">
-          <label className="text-gray-700 font-medium mb-1">
+          {/*  field for current Date and Time */}
+          <div className="flex flex-col gap-2">
+          <label className="text-gray-700 font-medium">
             Current Date and Time
           </label>
 
-          <DatePicker
+          <DatePicker className="w-full p-1 border border-gray-300 mb-4"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-          />
+          /> 
         </div>
-
+        </div>
+        
         <input
-          className="w-full border-2 border-black hover:bg-black hover:text-white p-2 rounded-md mt-3 font-medium"
+          className="w-full border border-black hover:bg-black hover:text-white p-2 rounded-md mt-3 font-medium"
           type="submit"
           value="Add Query"
         />

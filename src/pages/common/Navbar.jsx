@@ -39,7 +39,7 @@ const Navbar = () => {
     <>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/queries">Queries</NavLink>
-      <NavLink>Recommendations For Me</NavLink>
+      <NavLink to="/recommendationForMe">Recommendations For Me</NavLink>
       <NavLink to="/myQueries">My Queries</NavLink>
       <NavLink to="/myRecommendation">My Recommendations</NavLink>
     </>
@@ -81,12 +81,12 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <button onClick={handleLogOut} className="btn">Log Out</button>
+            <button onClick={handleLogOut} className="border border-black hover:bg-white hover:text-black p-2 bg-black text-white font-medium">Log Out</button>
           </>
         ) : (
           <>
             <Link to="/logIn">
-              <button className="btn">Log In</button>
+              <button className="border border-black hover:bg-black hover:text-white p-2 rounded-md font-medium">Log In</button>
             </Link>
           </>
         )}

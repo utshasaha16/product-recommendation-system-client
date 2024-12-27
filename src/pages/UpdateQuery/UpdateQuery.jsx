@@ -65,7 +65,7 @@ const UpdateQuery = () => {
   };
 
   return (
-    <div className=" md:p-12 p-12">
+    <div className=" md:p-12 p-6">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold mb-4">Update Your Recommendation</h2>
       </div>
@@ -178,7 +178,7 @@ const UpdateQuery = () => {
         </div>
 
         <input
-          className="w-full border-2 border-black hover:bg-black hover:text-white p-2 rounded-md mt-3 font-medium"
+          className="w-full border border-black hover:bg-black hover:text-white p-2 rounded-md mt-3 font-medium"
           type="submit"
           value="Update Query"
         />

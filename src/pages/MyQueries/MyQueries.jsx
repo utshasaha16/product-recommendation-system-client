@@ -11,6 +11,10 @@ const MyQueries = () => {
     fetchAllRecommendation();
   }, []);
   const fetchAllRecommendation = async () => {
+    // const { data } = await axios.get(
+    //   `${import.meta.env.VITE_API_URL}/recommendations`
+    // );
+    // setQueries(data);
     const { data } = await axios.get(
       `${import.meta.env.VITE_API_URL}/recommendations`
     );
@@ -24,7 +28,7 @@ const MyQueries = () => {
       <header className="py-12">
         <MyQueriesBanner></MyQueriesBanner>
       </header>
-      <main className="py-12">
+      <main className="md:py-12 py-6">
         <h1 className="text-xl font-bold text-center mb-6">My Queries</h1>
         <section>
           <div>

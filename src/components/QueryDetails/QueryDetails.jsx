@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Recommendations from "../Recommendations/Recommendations";
 
 const QueryDetails = () => {
+  const navigate = useNavigate();
  
   const { user } = useContext(AuthContext);
   const {
@@ -64,11 +65,13 @@ const QueryDetails = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        navigate("/myRecommendation")
       }
       form.reset();
     } catch (error) {
       console.log(error);
     }
+
   };
 
   
@@ -162,7 +165,7 @@ const QueryDetails = () => {
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="border-2 border-black hover:bg-black hover:text-white p-2 rounded-md font-medium">
+                <button className="border border-black hover:bg-black hover:text-white p-2 font-medium">
                   Add Recommendation
                 </button>
               </div>
