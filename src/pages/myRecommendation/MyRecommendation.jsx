@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
-import MyRecommendationTable from "../../components/MyRecommendationTable/MyRecommendationTable";
+import MyRecommendationTable from "./MyRecommendationTable";
 
 const MyRecommendation = () => {
   const [myRecommendations, setMyRecommendations] = useState([]);
@@ -35,7 +35,14 @@ const MyRecommendation = () => {
         </thead>
         <tbody>
           {/* row 1 */}
-          {myRecommendations.map((recommendation) => <MyRecommendationTable key={recommendation._id} recommendation={recommendation}></MyRecommendationTable>)}
+          {myRecommendations.map((recommendation) => (
+            <MyRecommendationTable
+              myRecommendations={myRecommendations}
+              setMyRecommendations={setMyRecommendations}
+              key={recommendation._id}
+              recommendation={recommendation}
+            ></MyRecommendationTable>
+          ))}
         </tbody>
       </table>
     </div>

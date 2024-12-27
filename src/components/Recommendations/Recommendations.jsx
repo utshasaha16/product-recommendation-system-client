@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import AllRecommendation from "./AllRecommendation";
 
 const Recommendations = () => {
   const [recommendations, setRecommendations] = useState([]);
@@ -24,25 +25,7 @@ const Recommendations = () => {
       <h1 className="text-lg font-bold mb-4">All Recomendations</h1>
       <section>
         {recommendations.map((recommendation) => (
-          <div key={recommendation._id} className="flex gap-3">
-            <img
-              className="w-12 h-12 rounded-full"
-              src={recommendation.recommendedProductImage}
-              alt=""
-            />
-            <div className="md:p-2 p-0 bg-base-200">
-              <p className="text-sm font-medium">
-                {recommendation.recommendedProductName}
-              </p>
-              <p>{recommendation.recommendedReason}</p>
-              <div className="flex justify-between">
-                <p className="mt-4 text-xs">
-                  Recomended By: {recommendation.recommenderName}
-                </p>
-                <p className="mt-4 text-xs">{recommendation.currentDate}</p>
-              </div>
-            </div>
-          </div>
+         <AllRecommendation key={recommendation._id} recommendation={recommendation}></AllRecommendation>
         ))}
       </section>
     </div>
