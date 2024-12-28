@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import axios from "axios";
 import QueriesCard from "../../components/QueriesCard/QueriesCard";
 import BoycottingReason from "../../components/BoycottingReason/BoycottingReason";
+import ProductView from "../../components/ProductView/ProductView";
 
 
 const Home = () => {
@@ -36,9 +37,14 @@ const Home = () => {
             recommendations.map(query => <QueriesCard key={query._id} query={query}></QueriesCard>)
           }
         </section>
+        {/* boycotted products section */}
         <section className="md:py-12 py-6">
           <h1 className="text-center font-bold mb-5 text-xl">Boycotting Products</h1>
           <BoycottingReason></BoycottingReason>
+        </section>
+        {/* product view section */}
+        <section className="md:py-12 py-6">
+          <ProductView></ProductView>
         </section>
       </main>
     </div>
