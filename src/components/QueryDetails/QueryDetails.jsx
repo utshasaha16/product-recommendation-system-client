@@ -78,7 +78,7 @@ const QueryDetails = () => {
   
 
   return (
-    <div>
+    <div className="md:w-11/12 mx-auto">
       <div className="card card-compact bg-base-100 py-12 rounded-none">
         <figure>
           <img src={productImage} alt="Product Image" />

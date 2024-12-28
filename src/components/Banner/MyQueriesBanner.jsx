@@ -19,7 +19,7 @@ const MyQueriesBanner = () => {
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">Wealcome to my queries</h1>
-          <button onClick={handleAddQuery} className="px-4 py-2 rounded border text-white hover:bg-black border-black">Add Queries</button>
+          <button onClick={handleAddQuery} className="px-4 py-2 border text-white hover:bg-black border-black">Add Queries</button>
         </div>
       </div>
     </div>
