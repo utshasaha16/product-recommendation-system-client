@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MyQueriesBanner from "../../components/Banner/MyQueriesBanner";
 import axios from "axios";
 import QueryCard from "../../components/QueryCard/QueryCard";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext/AuthContext";
 
 const MyQueries = () => {
   const [queries, setQueries] = useState([]);
+  const {user} = useContext(AuthContext)
   // const [querys, setQuerys] = useState(queries);
   useEffect(() => {
     fetchAllRecommendation();
   }, []);
   const fetchAllRecommendation = async () => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/recommendations`
+      `${import.meta.env.VITE_API_URL}/recommendations?email=${user?.email}`, {withCredentials: true}
     );
     setQueries(data);
   };

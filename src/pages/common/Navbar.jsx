@@ -71,7 +71,7 @@ const Navbar = () => {
             {user ? userLinks : links}
           </ul>
         </div>
-        <a className=" text-lg">Product Recommendation</a>
+        <a className=" text-xl font-extrabold">Product Recommendation</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 ml-16 space-x-2">
@@ -86,7 +86,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/logIn">
-              <button className="border border-black hover:bg-black hover:text-white p-2 rounded-md font-medium">Log In</button>
+              <button className="border border-black hover:bg-black hover:text-white p-2 font-medium">Log In</button>
             </Link>
           </>
         )}

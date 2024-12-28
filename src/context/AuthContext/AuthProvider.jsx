@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../../Firebase/firebase.init";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const provider = new GoogleAuthProvider();
 
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    const googleLogIn = () => {
+        return signInWithPopup(auth, provider)
     }
 
     const logInUser = (email, password) => {
@@ -30,7 +36,28 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log(currentUser);
-            setLoading(false);
+
+            if(currentUser?.email){
+                const user = {email: currentUser.email};
+
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, {withCredentials: true})
+                .then(res => {
+                    console.log("log in",res.data)
+                    setLoading(false);
+                })
+
+            }
+            else{
+                axios.post(`${import.meta.env.VITE_API_URL}/logOut`, {}, {
+                    withCredentials: true
+                })
+                .then(res => {
+                    console.log("log out",res.data)
+                    setLoading(false);
+                })
+            }
+
+            
         })
         return () => {
             unsubscribe()
@@ -43,7 +70,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         logInUser,
         logOutUser,
-        updateUserProfile
+        updateUserProfile,
+        googleLogIn
     }
 
   return (

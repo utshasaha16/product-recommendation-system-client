@@ -11,7 +11,7 @@ const QueriesCard = ({ query }) => {
     recommendationCount,
     _id,
   } = query || {};
-  console.log(query);
+  
 
   const handleRecommended = (id) => {
     navigate(`/queryDetails/${id}`);

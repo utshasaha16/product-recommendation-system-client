@@ -4,8 +4,9 @@ import signInAnimation from "../../assets/lottie/signIn.json";
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import { FaGoogle } from "react-icons/fa";
 const LogIn = () => {
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, googleLogIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogIn = (e) => {
@@ -16,6 +17,7 @@ const LogIn = () => {
 
     logInUser(email, password)
       .then((result) => {
+        console.log(result);
         Swal.fire({
           title: "Success!",
           text: "Successfully logIn",
@@ -25,6 +27,30 @@ const LogIn = () => {
         navigate("/");
       })
       .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to logIn please check email and password",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      });
+  };
+
+  const handleGoogleLogIn = () => {
+    googleLogIn()
+      .then((result) => {
+        console.log(result);
+        Swal.fire({
+          title: "Success!",
+          text: "Successfully logIn",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
         Swal.fire({
           title: "Error!",
           text: "Failed to logIn please check email and password",
@@ -79,6 +105,8 @@ const LogIn = () => {
               Register
             </Link>
           </p>
+          <div className="divider">OR</div>
+          <button onClick={handleGoogleLogIn} className="p-2 mb-2 flex items-center justify-center gap-1 font-semibold bg-black text-white">Google <FaGoogle></FaGoogle></button>
         </div>
       </div>
     </div>

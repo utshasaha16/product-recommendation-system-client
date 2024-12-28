@@ -11,7 +11,7 @@ const Home = () => {
 
   const fetchRecommendation =async () => {
     try{
-      const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/recommendations`)
+      const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/recommendations`, {withCredentials: true})
       const letestRecommendation = data.slice(0, 6)
       setRecommendations(letestRecommendation)
     }
@@ -19,7 +19,7 @@ const Home = () => {
       console.log(error);
     }
   }
-  console.log(recommendations);
+
 
   useEffect(() => {
     fetchRecommendation()
@@ -27,11 +27,11 @@ const Home = () => {
 
   return (
     <div>
-      <header className="md:py-12 py-6">
+      <header className="">
         {/* banner section */}
         <Banner></Banner>
       </header>
-      <main className=" md:w-11/12 mx-auto">
+      <main className=" md:w-11/12 mx-auto md:py-12 py-6">
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:py-12 py-6">
           {
             recommendations.map(query => <QueriesCard key={query._id} query={query}></QueriesCard>)

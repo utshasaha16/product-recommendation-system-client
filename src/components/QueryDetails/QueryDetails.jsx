@@ -10,7 +10,9 @@ const QueryDetails = () => {
  
   const { user } = useContext(AuthContext);
   const {
-    recommender,
+    name,
+    email,
+    photo,
     queryTitle,
     productName,
     productImage,
@@ -19,7 +21,7 @@ const QueryDetails = () => {
     boycottingReason,
     _id,
   } = useLoaderData();
-  console.log(recommender);
+
 
   const handleAddRecommendation = async (e) => {
     e.preventDefault();
@@ -31,8 +33,8 @@ const QueryDetails = () => {
     const queryId = _id;
     const prevQueryTitle = queryTitle;
     const prevProductName = productName;
-    const userEmail = recommender.email;
-    const userName = recommender.name;
+    const userEmail = email;
+    const userName = name;
     const recommenderEmail = user?.email;
     const recommenderName = user?.displayName;
     const currentDate = new Date();
@@ -89,16 +91,16 @@ const QueryDetails = () => {
           <div className="flex items-center gap-2">
             <img
               className="w-10 h-10 rounded-full"
-              src={recommender.photo}
+              src={photo}
               alt=""
             />
             <p className="text-sm font-medium">
-              Recommended By {recommender.name}
+              Recommended By {name}
             </p>
           </div>
           <p className="font-medium">Query Title: {queryTitle}</p>
           <p className="font-medium">Boycotting Reason: {boycottingReason}</p>
-          <p>Recommender Email: {recommender.email}</p>
+          <p>Recommender Email: {email}</p>
           <p>Date and time: {currentDateAndTime}</p>
         </div>
         {/* Add a recommendation section */}
