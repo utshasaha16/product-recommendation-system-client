@@ -26,7 +26,7 @@ const QueryCard = ({ query, queries, setQueries }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/recommendations/${_id}`, {
+        fetch(`https://product-recommendation-system-server-eight.vercel.app/recommendations/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

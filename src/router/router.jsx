@@ -67,13 +67,13 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/recommendations/${params.id}`),
+          fetch(`https://product-recommendation-system-server-eight.vercel.app/recommendations/${params.id}`),
       },
       {
         path: "/updateQueries/:id",
         element: <UpdateQuery></UpdateQuery>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/recommendations/${params.id}`),
+          fetch(`https://product-recommendation-system-server-eight.vercel.app/recommendations/${params.id}`),
       },
       {
         path: "/logIn",
