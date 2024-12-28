@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import axios from "axios";
 import QueriesCard from "../../components/QueriesCard/QueriesCard";
+import BoycottingReason from "../../components/BoycottingReason/BoycottingReason";
 
 
 const Home = () => {
@@ -34,6 +35,10 @@ const Home = () => {
           {
             recommendations.map(query => <QueriesCard key={query._id} query={query}></QueriesCard>)
           }
+        </section>
+        <section className="md:py-12 py-6">
+          <h1 className="text-center font-bold mb-5 text-xl">Boycotting Products</h1>
+          <BoycottingReason></BoycottingReason>
         </section>
       </main>
     </div>
