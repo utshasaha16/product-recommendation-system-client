@@ -22,7 +22,7 @@ const RecommendationForMe = () => {
   }, []);
 
   return (
-    <div className="overflow-x-auto md:py-10 py-5 md:w-11/12 mx-auto">
+    <div className="overflow-x-auto md:py-10 py-5 container mx-auto">
       <table className="table">
         {/* head */}
         <thead>

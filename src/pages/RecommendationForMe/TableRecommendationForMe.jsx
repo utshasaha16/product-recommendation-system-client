@@ -11,9 +11,6 @@ const TableRecommendationForMe = ({recommandation}) => {
       <td>{recommendedProductName}</td>
       <td>{recommenderName}</td>
       <td>{currentDate}</td>
-      <td>
-        
-      </td>
     </tr>
   );
 };

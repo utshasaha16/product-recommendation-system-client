@@ -18,7 +18,7 @@ const QueriesCard = ({ query }) => {
   }
 
   return (
-    <div className="card card-compact bg-base-100 rounded-xl hover:translate-y-2 hover:rounded-none shadow-md">
+    <div className="card card-compact bg-[#E8EBE4] rounded-xl hover:translate-y-2 hover:rounded-none ">
       <figure>
         <img src={productImage} alt="product image" />
       </figure>
@@ -28,7 +28,7 @@ const QueriesCard = ({ query }) => {
         <p>{queryTitle}</p>
         <p>Recommendations: {recommendationCount}</p>
         <div className="card-actions">
-          <button onClick={() => handleRecommended(_id)} className="py-1 px-2 border border-black hover:bg-black hover:text-white">
+          <button onClick={() => handleRecommended(_id)} className="px-8 py-3 border rounded-md bg-[#dedcff]">
           Recommend
           </button>
         </div>

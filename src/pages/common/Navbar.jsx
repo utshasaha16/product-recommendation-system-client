@@ -1,33 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   const handleLogOut = () => {
     logOutUser()
-    .then(() => {
-      Swal.fire({
-        title: 'success!',
-        text: 'Successfully LogOut',
-        icon: 'success',
-        confirmButtonText: 'Ok'
+      .then(() => {
+        Swal.fire({
+          title: "success!",
+          text: "Successfully LogOut",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        navigate("/");
       })
-      navigate('/')
-    })
-    .catch(error => {
-      console.log(error);
-      Swal.fire({
-        title: 'error!',
-        text: 'Failed to logout',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      })
-    })
-  }
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "error!",
+          text: "Failed to logout",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      });
+  };
 
   const links = (
     <>
@@ -45,10 +50,10 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 p-3">
+    <div className="navbar bg-[#e8edef] fixed z-10 container p-3 border border-b-stone-300">
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+        <div className="dropdown ">
+          <div tabIndex={0} role="button" onClick={toggleDropdown} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -64,29 +69,38 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            {user ? userLinks : links}
-          </ul>
+          {isOpen && (
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+            >
+              {user ? userLinks : links}
+            </ul>
+          )}
         </div>
-        <a className=" text-xl font-extrabold">Product Recommendation</a>
+          <a href="/" className="text-xl font-extrabold whitespace-nowrap">Product Recommendation</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 ml-16 space-x-2">
+        <ul className="menu menu-horizontal px-1 ml-10 space-x-2">
           {user ? userLinks : links}
         </ul>
       </div>
       <div className="navbar-end">
         {user ? (
           <>
-            <button onClick={handleLogOut} className="border border-black hover:bg-white hover:text-black p-2 bg-black text-white font-medium">Log Out</button>
+            <button
+              onClick={handleLogOut}
+              className="border py-2 px-5 rounded-md bg-[#f6cf0c] text-black font-medium"
+            >
+              Log Out
+            </button>
           </>
         ) : (
           <>
             <Link to="/logIn">
-              <button className="border border-black hover:bg-black hover:text-white p-2 font-medium">Log In</button>
+              <button className="border py-2 px-5 rounded-md bg-[#f6cf0c] text-black font-medium">
+                Log In
+              </button>
             </Link>
           </>
         )}

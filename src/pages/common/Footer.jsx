@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-base-200 py-12">
-      <footer className="footer text-base-content p-10">
+    <div className="bg-[#DCE1E3] py-12">
+      <footer className="footer text-black p-5">
         <aside>
           <img src={logo} alt="" />
           <p>
@@ -15,19 +15,16 @@ const Footer = () => {
             Providing reliable tech since 1992
           </p>
           <div className="flex gap-2 mt-3 items-center justify-center">
-            <FaLinkedin className="text-3xl"></FaLinkedin>
-            <FaFacebook className="text-3xl"></FaFacebook>
+            <Link to='https://www.linkedin.com/in/utsha-saha/'><FaLinkedin className="text-3xl"></FaLinkedin></Link>
+            <Link to='https://www.facebook.com/utsha.saha.77'><FaFacebook className="text-3xl"></FaFacebook></Link>
           </div>
         </aside>
         <nav>
           <h6 className="footer-title">Menu</h6>
-          <Link className="link link-hover">Queries</Link>
-          <Link className="link link-hover">Recommendations For Me</Link>
-          <Link className="link link-hover">My Queries</Link>
-          <Link className="link link-hover">My Recommendations</Link>
-          {/* <a className="link link-hover">Recommendations For Me</a>
-        <a className="link link-hover">My Queries</a>
-        <a className="link link-hover">My Recommendations</a> */}
+          <Link to='/queries' className="link link-hover">Queries</Link>
+          <Link to='/recommendationForMe' className="link link-hover">Recommendations For Me</Link>
+          <Link to='/myQueries' className="link link-hover">My Queries</Link>
+          <Link to='/myRecommendation' className="link link-hover">My Recommendations</Link>
         </nav>
         <nav>
           <h6 className="footer-title">Legal</h6>

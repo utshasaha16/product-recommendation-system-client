@@ -36,10 +36,10 @@ const Queries = () => {
   }, []);
   console.log(queries);
   return (
-    <div>
+    <div className="pt-12">
       <h2 className="text-xl font-medium text-center mt-4">All Queries</h2>
       {/* searc */}
-      <div className="md:w-11/12 w-8/12 mx-auto">
+      <div className="container mx-auto">
         <input
           type="text"
           placeholder="Search by product name..."
@@ -50,7 +50,7 @@ const Queries = () => {
         <button onClick={handleSearch}>search</button>
       </div>
       
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:py-12 py-6 md:w-11/12 mx-auto">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:py-12 py-6 container mx-auto">
         {searchProduct.length > 0 ? (
           searchProduct.map((query) => (
             <QueriesCard key={query._id} query={query}></QueriesCard>

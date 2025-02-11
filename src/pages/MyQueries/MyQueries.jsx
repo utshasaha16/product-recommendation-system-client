@@ -23,11 +23,11 @@ const MyQueries = () => {
 
   return (
     <div>
-      <header className="py-12">
+      <header className="md:pt-12 pt-6">
         <MyQueriesBanner></MyQueriesBanner>
       </header>
-      <main className="md:py-12 py-6 md:w-11/12 mx-auto">
-        <h1 className="text-xl font-bold text-center mb-6">My Queries</h1>
+      <main className="md:py-12 py-6 container mx-auto">
+        <h1 className="text-xl font-bold text-center md:mb-12 mb-6">My Queries</h1>
         <section>
           <div>
             {queries.length === 0 ? (

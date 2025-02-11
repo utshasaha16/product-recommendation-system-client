@@ -7,11 +7,11 @@ const BoycottingReason = () => {
   return (
     <div className="flex md:flex-row flex-col gap-3">
       {/* card 1 */}
-      <div className="bg-base-100 rounded-md shadow-md">
+      <div className="bg-[#f6cf0c] rounded-md shadow-md">
         <div className="p-4">
           <div className="flex gap-2">
             <img className="w-12 h-12 rounded-full" src={image1} alt="product image" />
-            <h2 className="card-title">PowerLift Dumbbell Set</h2>
+            <h2 className="card-title text-black">PowerLift Dumbbell Set</h2>
           </div>
           <p className="mt-3">
             The handles are slippery and uncomfortable during long workouts,
@@ -23,7 +23,7 @@ const BoycottingReason = () => {
       {/* container-2 */}
       <div className="flex md:flex-col flex-col gap-3">
         {/* card-2 */}
-        <div className="bg-base-100 rounded-md shadow-md">
+        <div className=" bg-[#0b0b0b] text-white rounded-md shadow-md">
           <div className="p-4">
             <div className="flex gap-2">
               <img className="w-12 h-12 rounded-full" src={image2} alt="product image" />
@@ -37,11 +37,11 @@ const BoycottingReason = () => {
           </div>
         </div>
         {/* card-3 */}
-        <div className="bg-base-100 rounded-md shadow-md">
+        <div className="bg-[#e5e4f7] rounded-md shadow-md">
           <div className="p-4">
             <div className="flex gap-2">
               <img className="w-12 h-12 rounded-full" src={image3} alt="product image" />
-              <h2 className="card-title">Pro Tennis Racket</h2>
+              <h2 className="card-title text-black">Pro Tennis Racket</h2>
             </div>
             <p className="mt-3">
               The strings lose tension quickly and need frequent restringing,
