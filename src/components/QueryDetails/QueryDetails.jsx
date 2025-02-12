@@ -80,8 +80,8 @@ const QueryDetails = () => {
   
 
   return (
-    <div className="container mx-auto">
-      <div className="card card-compact bg-base-100 py-12 rounded-none">
+    <div className="container mx-auto py-20">
+      <div className="card card-compact bg-base-100 rounded-none">
         <figure>
           <img src={productImage} alt="Product Image" />
         </figure>
@@ -167,7 +167,7 @@ const QueryDetails = () => {
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="border border-black hover:bg-black hover:text-white p-2 font-medium">
+                <button className="border rounded-md bg-[#dedcff] transition duration-300 hover:bg-[#c5baff] hover:scale-105 text-black p-2 font-medium">
                   Add Recommendation
                 </button>
               </div>

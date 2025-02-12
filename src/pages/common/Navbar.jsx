@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import "../../pages/common/navbar.css";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

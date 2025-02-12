@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import QueriesCard from "../../components/QueriesCard/QueriesCard";
+import Loading from "../Loading/Loading";
 
 const Queries = () => {
   const [queries, setQueries] = useState([]);
   const [searchText, setSearchtext] = useState("");
   const [searchProduct, setSearchProduct] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchQueries = async () => {
     try {
@@ -14,9 +16,11 @@ const Queries = () => {
         { withCredentials: true }
       );
       setQueries(data);
-      setSearchProduct(data)
+      setSearchProduct(data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,18 +53,21 @@ const Queries = () => {
         />
         <button onClick={handleSearch}>search</button>
       </div>
-      
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:py-12 py-6 container mx-auto">
-        {searchProduct.length > 0 ? (
-          searchProduct.map((query) => (
-            <QueriesCard key={query._id} query={query}></QueriesCard>
-          ))
-        ) : (
-          <p className="text-center col-span-full text-gray-500">
-            No queries found for "{searchText}".
-          </p>
-        )}
-      </section>
+      {loading ? (
+        <Loading></Loading>
+      ) : (
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:py-12 py-6 container mx-auto">
+          {searchProduct.length > 0 ? (
+            searchProduct.map((query) => (
+              <QueriesCard key={query._id} query={query}></QueriesCard>
+            ))
+          ) : (
+            <p className="text-center col-span-full text-gray-500">
+              No queries found for "{searchText}".
+            </p>
+          )}
+        </section>
+      )}
     </div>
   );
 };

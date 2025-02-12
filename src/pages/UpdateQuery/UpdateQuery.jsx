@@ -17,7 +17,7 @@ const UpdateQuery = () => {
     currentDateAndTime,
     _id,
     recommender,
-    boycottingReason
+    boycottingReason,
   } = query || {};
 
   const handleUpdateQuery = async (e) => {
@@ -47,142 +47,145 @@ const UpdateQuery = () => {
     };
     console.log(updateQuery);
 
-    
     const { data } = await axios.put(
       `${import.meta.env.VITE_API_URL}/recommendations/${_id}`,
       updateQuery
     );
-    if(data.modifiedCount){
-          Swal.fire({
-            title: 'success!',
-            text: 'successfully updated your recommendation',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
-        }
+    if (data.modifiedCount) {
+      Swal.fire({
+        title: "success!",
+        text: "successfully updated your recommendation",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+    }
     form.reset();
     console.log(data);
   };
 
   return (
-    <div className=" md:p-12 p-6">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold mb-4">Update Your Recommendation</h2>
-      </div>
-      <form onSubmit={handleUpdateQuery}>
-        {/* input field for Product Name url and Product Brand */}
-        <div className="md:flex gap-4 items-center">
-          <div className="md:w-1/2">
-            <label className="text-gray-700 font-medium mb-1">
-              Product Name
-            </label>
-
-            <input
-              type="text"
-              name="productName"
-              defaultValue={productName}
-              placeholder="Enter product name"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-          <div className="md:w-1/2">
-            <label className=" text-gray-700 font-medium mb-1">
-              Product Brand
-            </label>
-
-            <input
-              type="text"
-              name="productBrand"
-              defaultValue={productBrand}
-              placeholder="Enter product brand"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
+    <div className="py-20">
+      <div className="md:p-12 p-6">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold mb-4">
+            Update Your Recommendation
+          </h2>
         </div>
-        {/* input field for Product Image-URL and Query TItle */}
-        <div className="md:flex gap-4 items-center">
-          <div className="md:w-1/2">
+        <form onSubmit={handleUpdateQuery}>
+          {/* input field for Product Name url and Product Brand */}
+          <div className="md:flex gap-4 items-center">
+            <div className="md:w-1/2">
+              <label className="text-gray-700 font-medium mb-1">
+                Product Name
+              </label>
+
+              <input
+                type="text"
+                name="productName"
+                defaultValue={productName}
+                placeholder="Enter product name"
+                required
+                className="w-full mb-4 p-2 border border-gray-300 rounded"
+              ></input>
+            </div>
+            <div className="md:w-1/2">
+              <label className=" text-gray-700 font-medium mb-1">
+                Product Brand
+              </label>
+
+              <input
+                type="text"
+                name="productBrand"
+                defaultValue={productBrand}
+                placeholder="Enter product brand"
+                required
+                className="w-full mb-4 p-2 border border-gray-300 rounded"
+              ></input>
+            </div>
+          </div>
+          {/* input field for Product Image-URL and Query TItle */}
+          <div className="md:flex gap-4 items-center">
+            <div className="md:w-1/2">
+              <label className="text-gray-700 font-medium mb-1">
+                Product Image-URL
+              </label>
+
+              <input
+                type="url"
+                name="productImage"
+                defaultValue={productImage}
+                placeholder="Enter product image-URL"
+                required
+                className="w-full mb-4 p-2 border border-gray-300 rounded"
+              ></input>
+            </div>
+            <div className="md:w-1/2">
+              <label className=" text-gray-700 font-medium mb-1">
+                Query TItle
+              </label>
+
+              <input
+                type="text"
+                name="queryTitle"
+                defaultValue={queryTitle}
+                placeholder="Enter Query tItle"
+                required
+                className="w-full mb-4 p-2 border border-gray-300 rounded"
+              ></input>
+            </div>
+          </div>
+          {/* input field for Boycotting Reason Details and user email */}
+          <div className="md:flex gap-4 items-center">
+            <div className="md:w-1/2">
+              <label className="text-gray-700 font-medium mb-1">
+                Boycotting Reason Details
+              </label>
+
+              <input
+                type="text"
+                name="boycottingReason"
+                defaultValue={boycottingReason}
+                placeholder="Boycotting reason details"
+                required
+                className="w-full mb-4 p-2 border border-gray-300 rounded"
+              ></input>
+            </div>
+            <div className="md:w-1/2">
+              <label className=" text-gray-700 font-medium mb-1">
+                User Email
+              </label>
+
+              <input
+                type="text"
+                name="email"
+                defaultValue={user?.email}
+                readOnly
+                placeholder="User email"
+                required
+                className="w-full mb-4 p-2 border border-gray-300 rounded"
+              ></input>
+            </div>
+          </div>
+          {/* input field for current Date and Time */}
+
+          <div className="flex flex-col gap-2">
             <label className="text-gray-700 font-medium mb-1">
-              Product Image-URL
+              Current Date and Time
             </label>
 
-            <input
-              type="url"
-              name="productImage"
-              defaultValue={productImage}
-              placeholder="Enter product image-URL"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
           </div>
-          <div className="md:w-1/2">
-            <label className=" text-gray-700 font-medium mb-1">
-              Query TItle
-            </label>
 
-            <input
-              type="text"
-              name="queryTitle"
-              defaultValue={queryTitle}
-              placeholder="Enter Query tItle"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-        </div>
-        {/* input field for Boycotting Reason Details and user email */}
-        <div className="md:flex gap-4 items-center">
-          <div className="md:w-1/2">
-            <label className="text-gray-700 font-medium mb-1">
-              Boycotting Reason Details
-            </label>
-
-            <input
-              type="text"
-              name="boycottingReason"
-              defaultValue={boycottingReason}
-              placeholder="Boycotting reason details"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-          <div className="md:w-1/2">
-            <label className=" text-gray-700 font-medium mb-1">
-              User Email
-            </label>
-
-            <input
-              type="text"
-              name="email"
-              defaultValue={user?.email}
-              readOnly
-              placeholder="User email"
-              required
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
-            ></input>
-          </div>
-        </div>
-        {/* input field for current Date and Time */}
-
-        <div className="flex flex-col gap-2">
-          <label className="text-gray-700 font-medium mb-1">
-            Current Date and Time
-          </label>
-
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+          <input
+            className="w-full mt-4 border rounded-md bg-[#dedcff] transition duration-300 hover:bg-[#c5baff] hover:scale-105 text-black p-2 font-medium"
+            type="submit"
+            value="Update Query"
           />
-        </div>
-
-        <input
-          className="w-full border border-black hover:bg-black hover:text-white p-2 rounded-md mt-3 font-medium"
-          type="submit"
-          value="Update Query"
-        />
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
