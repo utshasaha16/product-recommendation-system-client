@@ -47,7 +47,7 @@ const QueryCard = ({ query, queries, setQueries }) => {
   };
 
   return (
-    <div className="card card-compact bg-base-100 rounded-xl hover:translate-y-2 hover:rounded-none shadow-xl">
+    <div className="card card-compact bg-[#E8EBE4] rounded-xl hover:translate-y-2 hover:rounded-none">
       <figure>
         <img src={productImage} alt="product image" />
       </figure>
@@ -59,18 +59,18 @@ const QueryCard = ({ query, queries, setQueries }) => {
         <div className="card-actions">
           <Link to={`/queryDetails/${_id}`}>
             {" "}
-            <button className="py-1 px-2 border border-black hover:bg-black hover:text-white">
+            <button className="border py-1 px-2 rounded-md bg-[#E8EBE4]  transition duration-300 hover:bg-[#f8ebaa] hover:scale-105 text-black font-medium">
               View details
             </button>
           </Link>
           <Link to={`/updateQueries/${_id}`}>
-            <button className="py-1 px-2 border border-black hover:bg-black hover:text-white">
+            <button className="border py-1 px-2 rounded-md bg-[#E8EBE4]  transition duration-300 hover:bg-[#c9f5ba] hover:scale-105 text-black font-medium">
               Update
             </button>
           </Link>
           <button
             onClick={() => handleDelete(_id)}
-            className="py-1 px-2 border border-black hover:bg-black hover:text-white"
+            className="border py-1 px-2 rounded-md bg-[#E8EBE4]  transition duration-300 hover:bg-[#fdc5c5] hover:scale-105 text-black font-medium"
           >
             Delete
           </button>

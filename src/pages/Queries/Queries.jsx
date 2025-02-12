@@ -36,7 +36,7 @@ const Queries = () => {
   }, []);
   console.log(queries);
   return (
-    <div className="pt-12">
+    <div className="pt-20">
       <h2 className="text-xl font-medium text-center mt-4">All Queries</h2>
       {/* searc */}
       <div className="container mx-auto">

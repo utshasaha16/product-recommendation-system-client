@@ -90,7 +90,7 @@ const Navbar = () => {
           <>
             <button
               onClick={handleLogOut}
-              className="border py-2 px-5 rounded-md bg-[#f6cf0c] text-black font-medium"
+              className="border py-2 px-5 rounded-md bg-[#f6cf0c]  transition duration-300 hover:bg-[#e5be00] hover:scale-105 text-black font-medium"
             >
               Log Out
             </button>
@@ -98,7 +98,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/logIn">
-              <button className="border py-2 px-5 rounded-md bg-[#f6cf0c] text-black font-medium">
+              <button className="border py-2 px-5 rounded-md bg-[#f6cf0c]  transition duration-300 hover:bg-[#e5be00] hover:scale-105 text-black font-medium">
                 Log In
               </button>
             </Link>

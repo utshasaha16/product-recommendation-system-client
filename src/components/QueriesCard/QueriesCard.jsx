@@ -28,7 +28,7 @@ const QueriesCard = ({ query }) => {
         <p>{queryTitle}</p>
         <p>Recommendations: {recommendationCount}</p>
         <div className="card-actions">
-          <button onClick={() => handleRecommended(_id)} className="px-8 py-3 border rounded-md bg-[#dedcff]">
+          <button onClick={() => handleRecommended(_id)} className="px-8 py-3 border rounded-md bg-[#dedcff] transition duration-300 hover:bg-[#c5baff] hover:scale-105 text-black">
           Recommend
           </button>
         </div>

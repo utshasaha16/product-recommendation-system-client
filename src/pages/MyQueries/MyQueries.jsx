@@ -34,7 +34,7 @@ const MyQueries = () => {
               <div className="flex flex-col items-center">
                 <p className="text-gray-600 mb-4">No queries found.</p>
                 <Link to="/addQueries">
-                  <button className="px-4 py-2  border text-black hover:text-white hover:bg-black border-black">
+                  <button className="border py-2 px-5 rounded-md bg-[#f6cf0c]  transition duration-300 hover:bg-[#e5be00] hover:scale-105 text-black font-medium">
                     Add Query
                   </button>
                 </Link>

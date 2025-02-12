@@ -108,18 +108,15 @@ const Register = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="border border-black hover:bg-black hover:text-white p-2 font-medium">
+              <button className="border py-2 px-5 rounded-md bg-[#f6cf0c] text-black transition duration-300 hover:bg-[#e5be00] hover:scale-105 font-medium">
                 Register
               </button>
             </div>
           </form>
           <p className="text-center mb-3 font-semibold">
             Allready have an account?{" "}
-            <Link
-              className="text-blue-700 font-semibold"
-              to="/logIn"
-            >
-              Log In
+            <Link className="text-black font-semibold" to="/logIn">
+              LogIn
             </Link>
           </p>
         </div>
